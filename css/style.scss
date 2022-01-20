@@ -19,9 +19,15 @@ $color-bg: #f9f4ee;
     align-items: $a;
 }
 
+@mixin mq-pc {
+    @media (min-width: 800px){
+        @content;
+    }
+}
+
 body{
     color: $color-text;
-    font-size: rem(14);
+    font-size: clamp(12px, 1.4vw, 24px);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7;
     letter-spacing: 0.02em;
@@ -41,6 +47,16 @@ img{
 ul{
     list-style: none;
 }
+
+.mobile{
+    display: block;
+
+    @include mq-pc{
+        display: none;
+    }
+}
+
+
 
 /* header */
 .header{
@@ -112,10 +128,19 @@ ul{
 
     &__pic{
         margin-bottom: 2em;
+        // background: url(https://trident.takagino.net/doc2021/markup/assets/09/coffee/images/pic_visual.jpg) no-repeat center center/cover;
+        // height: clamp(500px, 40vw, 600px);
+        width: 100%;
+        height: clamp(500px, 40vw, 600px);
+        object-fit: cover;
     }
 
     &__text{
         margin-bottom: 1em;
+
+        & span{
+            display: inline-block;
+        }
     }
 }
 
@@ -144,6 +169,7 @@ ul{
     &__link{
         color: #fff;
         text-decoration: none;
+        overflow-wrap: break-word;
     }
 }
 
