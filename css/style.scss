@@ -6,8 +6,9 @@ $color-bg: #f9f4ee;
 }
 
 @mixin inner($w:1070px) {
-    width: 90%;
-    max-width: $w;
+    // width: 90%;
+    // max-width: $w;
+    width: min(90%, $w);
     margin: auto;
 }
 
@@ -25,6 +26,10 @@ body{
     line-height: 1.7;
     letter-spacing: 0.02em;
     background-color: $color-bg;
+
+    &.is-open{
+        overflow: hidden;
+    }
 }
 
 img{
@@ -53,6 +58,45 @@ ul{
         z-index: 998;
         font-size: rem(32);
         line-height: 1;
+    }
+
+    &__nav{
+        @include flex(center, center);
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba($color-text,.8);
+
+        .is-open &{
+            display: flex;
+        }
+    }
+
+    &__close{
+        position: fixed;
+        top: 2rem;
+        right: 5%;
+        color: #fff;
+        font-size: rem(32);
+        line-height: 1;
+    }
+}
+
+.g-nav{
+
+    &__item{
+        margin: 1em 0;
+    }
+
+    &__link{
+        color: #fff;
+        font-size: rem(24);
+        text-decoration: none;
+        line-height: min(5vh, 2em);
     }
 }
 
